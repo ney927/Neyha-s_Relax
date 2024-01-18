@@ -1,35 +1,52 @@
 
-
+//get relations from db and display them in table
 fetch('/relations')
     .then((data) => {return data.json()})
     .then((json) => {
         console.log(json)
         const relationsDiv = document.getElementById("relations")
+
         const Student = document.createElement("table")
-        Student.innerHTML = "<tr><th>Student<th></tr><tr><th>SID</th><th>Name</th><th>Email</th></tr>"
+        Student.className = "relation"
+        let studentHTML = "<tr><th>Student<th></tr><tr><th>SID</th><th>Name</th><th>Email</th></tr>"
         for(i in json.Student) {
-            Student.innerHTML +=   `<tr><td>${json.Student[i].sid}</td><td>${json.Student[i].name}</td><td>${json.Student[i].email}</td></tr>`
+            studentHTML +=   `<tr><td>${json.Student[i].sid}</td><td>${json.Student[i].name}</td><td>${json.Student[i].email}</td></tr>`
         };
+        Student.innerHTML = studentHTML
+
         const Course = document.createElement("table")
-        Course.innerHTML = "<tr><th>Course<th></tr><tr><th>CID</th><th>Title</th><th>Hours</th></tr>"
+        Course.className = "relation"
+        courseHTML = "<tr><th>Course<th></tr><tr><th>CID</th><th>Title</th><th>Hours</th></tr>"
         for(i in json.Course) {
-            Course.innerHTML +=   `<tr><td>${json.Course[i].cid}</td><td>${json.Course[i].title}</td><td>${json.Course[i].hours}</td></tr>`
+            courseHTML +=   `<tr><td>${json.Course[i].cid}</td><td>${json.Course[i].title}</td><td>${json.Course[i].hours}</td></tr>`
         };
+        Course.innerHTML = courseHTML
+
         const Takes = document.createElement("table")
-        Takes.innerHTML = "<tr><th>Takes<th></tr><tr><th>SID</th><th>CID</th><th>Mark</th></tr>"
+        Takes.className = "relation"
+        takesHTML = "<tr><th>Takes<th></tr><tr><th>SID</th><th>CID</th><th>Mark</th></tr>"
         for(i in json.Takes) {
-            Takes.innerHTML +=   `<tr><td>${json.Takes[i].sid}</td><td>${json.Takes[i].cid}</td><td>${json.Takes[i].mark}</td></tr>`
+            takesHTML +=   `<tr><td>${json.Takes[i].sid}</td><td>${json.Takes[i].cid}</td><td>${json.Takes[i].mark}</td></tr>`
         };
+        Takes.innerHTML = takesHTML
 
         relationsDiv.appendChild(Student)
         relationsDiv.appendChild(Course)
         relationsDiv.appendChild(Takes)
     })
 
+const queryInput = document.getElementById("query-input")
 
+const operatorBttns = document.getElementsByClassName("operator")
+for(let i =0; i<operatorBttns.length; i++){
+    operatorBttns[i].addEventListener('click', (e) => {
+        queryInput.value += operatorBttns[i].innerHTML
+    })
+}
 
 
 //TRASHY SHTI AF
+/*
 const createBttn = document.getElementById("create-relation-bttn")
 const mssg = document.getElementById("create-relation-mssg")
 
@@ -72,3 +89,4 @@ createBttn.addEventListener("click", (e) => {
         })
     }
 })
+*/

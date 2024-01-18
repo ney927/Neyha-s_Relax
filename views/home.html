@@ -5,27 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neyha's Relax</title>
     <style>
-        table {
+        table.relation {
             border-collapse: collapse;
             display: inline;
             margin-right: 100px;
         }
-        tr {
+        table.relation > tbody > tr {
             border: 1px solid black;
         }
-        td, th {
+        table.relation > tbody > tr > td, th {
             width: 100px;
             text-align: left;
             padding: 5px;
         }
+        table#operators {
+            border-collapse: collapse;
+            margin-left: 100px;
+        }
+        table#operators > tbody > tr {
+            border: 1px solid black;
+        }
+        table#operators > tbody > tr > th {
+            text-align: right;
+        }
+        table#operators > tbody > tr > th, td {
+            padding: 5px 20px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        #get-query{
+            margin-left: 200px;
+        }
+        #query-input{
+            padding: 10px;
+            width: 400px;
+            display: block;
+            margin: 10px 0;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Relations</h1>
-
+    
     <div id="relations">
-        <h3>Relations</h3>
+        <h1>Relations</h1>
     </div>
+
+    <h1>Queries</h1>
+    <div id="get-query">
+        
+        <p>Enter Query: </p>
+        <button class="operator" id="selection">&#963</button>
+        <button class="operator" id="projection">&#960</button>
+        <button class="operator" id="inner-join">&#8904</button>
+        <button class="operator" id="left-ojoin">⟕</button>
+        <button class="operator" id="full-ojoin">⟗</button>
+        <button class="operator"id="right-ojoin">⟖</button>
+        <button class="operator" id="intersection">&#8745</button>
+        <button class="operator" id="union">&#8746</button>
+        <button class="operator" id="minus">-</button>
+        <button class="operator" id="divide">/</button>
+        <input id="query-input" type="text">
+        <button id="submit">Execute Query</button>
+
+    </div>
+
+    <br><br><br>
+
+    <table id="operators">
+        <tr>
+            <th>Operators</th>
+        </tr>
+        <tr>
+            <td>Selection</td>
+            <th>&#963</th>
+        </tr>
+        <tr>
+            <td>Projection</td>
+            <th>&#960</th>
+        </tr>
+        <tr>
+            <td>Inner Join</td>
+            <th>&#8904</th>
+        </tr>
+        <tr>
+            <td>Outer Join (Left)</td>
+            <th>⟕</th>
+        </tr>
+        <tr>
+            <td>Outer Join (Full)</td>
+            <th>⟗</th>
+        </tr>
+        <tr>
+            <td>Outer Join (Right)</td>
+            <th>⟖</th>
+        </tr>
+        <tr>
+            <td>Intersection</td>
+            <th>&#8745</th>
+        </tr>
+        <tr>
+            <td>Union</td>
+            <th>&#8746</th>
+        </tr>
+        <tr>
+            <td>Minus</td>
+            <th>-</th>
+        </tr>
+        <tr>
+            <td>Divide By</td>
+            <th>/</th>
+        </tr>
+    </table>
     
     <script src="./js/relations.js"></script>
 </body>
